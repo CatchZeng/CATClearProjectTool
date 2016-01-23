@@ -1,7 +1,8 @@
 # CATClearProjectTool
-clear objective-c unused class file
+clear objective-c project unused class file
 
 ----------
+中文请[戳这里](http://catchzeng.com/2016/01/23/iOS%E6%B8%85%E7%90%86%E5%B7%A5%E7%A8%8B%E4%B8%AD%E6%9C%AA%E4%BD%BF%E7%94%A8%E7%9A%84%E7%B1%BB%E6%96%87%E4%BB%B6%E5%B7%A5%E5%85%B7/) ； 简书好友请[戳这里](http://www.jianshu.com/p/1b188a91b23f)；
 
 ***Please backup before use it!***
 ----------------
