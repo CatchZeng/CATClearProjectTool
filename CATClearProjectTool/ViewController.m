@@ -50,7 +50,7 @@
 }
 
 -(void)searchUnUsedClassesSuccess:(NSMutableDictionary *)dic{
-    NSString* msg = @"searching unused classes success:\n";
+    NSString* msg = @"search unused classes success:\n";
     _txtResult.string = [msg stringByAppendingString:[self _getClassNamesFromDic:dic]];
 }
 
