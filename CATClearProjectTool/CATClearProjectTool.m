@@ -238,7 +238,12 @@
     }
     if(children.count == 0){
         NSString*pathExtension =  dir.pathExtension;
-        if([pathExtension isEqualToString:@"m"] || [pathExtension isEqualToString:@"h"] || [pathExtension isEqualToString:@"pch"] || [pathExtension isEqualToString:@"mm"] || [pathExtension isEqualToString:@"xib"]){
+        if(   [pathExtension isEqualToString:@"m"] 
+           || [pathExtension isEqualToString:@"h"]
+           || [pathExtension isEqualToString:@"pch"]
+           || [pathExtension isEqualToString:@"mm"]
+           || [pathExtension isEqualToString:@"xib"]
+           || [pathExtension isEqualToString:@"storyboard"]){
             [self _checkClassWithDir:dir];
         }
     }else{
