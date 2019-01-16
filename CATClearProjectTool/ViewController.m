@@ -33,6 +33,10 @@
 #pragma mark -- UIResponder
 
 - (IBAction)searchButtonClicked:(id)sender {
+    if (_txtPath.stringValue.length < 1) {
+        return;
+    }
+    
     _txtResult.string = @"searching all classes...";
     [self.clearProjectTool startSearchWithXcodeprojFilePath:_txtPath.stringValue];
 }
@@ -46,17 +50,23 @@
 
 -(void)searchAllClassesSuccess:(NSMutableDictionary *)dic{
     NSString* msg = @"searching all classes success:\n";
-    _txtResult.string = [msg stringByAppendingString:[self _getClassNamesFromDic:dic]];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        _txtResult.string = [msg stringByAppendingString:[self _getClassNamesFromDic:dic]];
+    });
 }
 
 -(void)searchUnUsedClassesSuccess:(NSMutableDictionary *)dic{
     NSString* msg = @"search unused classes success:\n";
-    _txtResult.string = [msg stringByAppendingString:[self _getClassNamesFromDic:dic]];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        _txtResult.string = [msg stringByAppendingString:[self _getClassNamesFromDic:dic]];
+    });
 }
 
 -(void)clearUnUsedClassesSuccess:(NSMutableDictionary *)dic{
     NSString* msg = @"clear unused classes success:\n";
-    _txtResult.string = [msg stringByAppendingString:[self _getClassNamesFromDic:dic]];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        _txtResult.string = [msg stringByAppendingString:[self _getClassNamesFromDic:dic]];
+    });
 }
 
 #pragma mark -- helper
