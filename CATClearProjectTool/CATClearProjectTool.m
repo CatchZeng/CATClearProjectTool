@@ -113,14 +113,29 @@
     });
 }
 
+-(void)_removeFilterClasses {
+    for (NSString* fliterKey in _fliterClasses) {
+        if ([fliterKey hasSuffix:@"*"]) {
+            NSString* prefix = [fliterKey substringWithRange: NSMakeRange(0, fliterKey.length - 1)];
+            for (int i=0; i<_unUsedClasses.allKeys.count; i++) {
+                NSString* aClass = _unUsedClasses.allKeys[i];
+                if ([aClass hasPrefix: prefix]) {
+                    [_unUsedClasses removeObjectForKey: aClass];
+                }
+            }
+        } else {
+            [_unUsedClasses removeObjectForKey:fliterKey];
+        }
+    }
+}
+
 /**
  *  clear unUsedClasses file and meta data in project file
  */
 -(void)clearFileAndMetaData{
     //filter some classes eg. AppDelegate,main...
-    for (NSString* fliterKey in _fliterClasses) {
-        [_unUsedClasses removeObjectForKey:fliterKey];
-    }
+    [self _removeFilterClasses];
+    
     dispatch_async(dispatch_get_global_queue(0,0), ^{
         
         NSString* projectContent = [NSString stringWithContentsOfFile:_pbxprojPath encoding:NSUTF8StringEncoding error:nil];

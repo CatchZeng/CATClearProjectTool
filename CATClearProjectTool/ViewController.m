@@ -37,7 +37,7 @@
         return;
     }
     
-    _txtResult.string = @"searching all classes...";
+    _txtResult.string = @"Searching all classes...";
     [self.clearProjectTool startSearchWithXcodeprojFilePath:_txtPath.stringValue];
 }
 
@@ -49,21 +49,21 @@
 #pragma mark -- CATClearProjectToolDelegate
 
 -(void)searchAllClassesSuccess:(NSMutableDictionary *)dic{
-    NSString* msg = @"searching all classes success:\n";
+    NSString* msg = @"Successfully searched all classes:\n";
     dispatch_async(dispatch_get_main_queue(), ^{
         _txtResult.string = [msg stringByAppendingString:[self _getClassNamesFromDic:dic]];
     });
 }
 
 -(void)searchUnUsedClassesSuccess:(NSMutableDictionary *)dic{
-    NSString* msg = @"search unused classes success:\n";
+    NSString* msg = @"Successfully searched unused classes:\n";
     dispatch_async(dispatch_get_main_queue(), ^{
         _txtResult.string = [msg stringByAppendingString:[self _getClassNamesFromDic:dic]];
     });
 }
 
 -(void)clearUnUsedClassesSuccess:(NSMutableDictionary *)dic{
-    NSString* msg = @"clear unused classes success:\n";
+    NSString* msg = @"Successfully clear unused classes:\n";
     dispatch_async(dispatch_get_main_queue(), ^{
         _txtResult.string = [msg stringByAppendingString:[self _getClassNamesFromDic:dic]];
     });
